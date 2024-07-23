@@ -1,0 +1,10 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "declaration": true, // 生成类型定义文件
+      "outDir": "./lib" // 输出目录为 `./lib`
+    },
+    "include": ["src/**/*.ts"], // 包含 src 文件夹中的 TypeScript 文件
+    "exclude": ["node_modules", "test"] // 排除 node_modules 和 test 文件夹
+  }
+  

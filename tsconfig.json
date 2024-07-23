@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", // 指定 ECMAScript 目标版本为 ES2020，以支持现代 JavaScript 特性
+    "module": "commonjs", // 将模块解析设置为 CommonJS，以便与 Node.js 兼容
+    "strict": true, // 启用所有严格类型检查选项，以增强代码的类型安全性
+    "esModuleInterop": true, // 启用对 ES 模块的互操作性，以便使用 `import` 语句导入 CommonJS 模块
+    "skipLibCheck": true, // 跳过对声明文件（.d.ts 文件）的类型检查，以加快编译速度
+    "forceConsistentCasingInFileNames": true, // 强制文件名一致大小写，以避免在不同操作系统上的文件名大小写问题
+    "outDir": "./lib", // 指定编译输出目录为 `./lib`
+    "types": ["node", "jest"], // 添加 Jest 的类型定义
+    "rootDir": "./src", // 指定输入文件的根目录为 `./src`
+    "declaration": true, // 添加这一行以生成类型定义文件
+  },
+  "include": ["src/**/*.ts", "test/**/*.ts"], // 包含 src 和 test 文件夹中的 TypeScript 文件
+  "exclude": ["node_modules", "test"] // 排除 node_modules 文件夹
+}

@@ -1,0 +1,6 @@
+coverage/
+data/
+test/
+src/
+jest.config.js
+tree-out.txt

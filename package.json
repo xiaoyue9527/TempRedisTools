@@ -1,0 +1,39 @@
+{
+  "name": "temp-redis-tools",
+  "version": "0.0.1",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "jest",
+    "tree": "tree -l 10 -o tree-out.txt --ignore node_modules/ --ignore build/ --ignore dist/ --ignore migrations/",
+    "coverage": "jest --coverage"
+  },
+  "keywords": [],
+  "author": "xiaoyue9527",
+  "license": "MIT",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiaoyue9527/TempRedisTools.git"
+  },
+  "homepage": "https://xiaoyue9527.github.io/TempRedisTools/",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.14.11",
+    "@typescript-eslint/eslint-plugin": "^7.17.0",
+    "@typescript-eslint/parser": "^7.17.0",
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.3",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "ioredis": "^5.4.1"
+  },
+  "files": [
+    "lib",
+    "package.json",
+    "README.md"
+  ]
+}
