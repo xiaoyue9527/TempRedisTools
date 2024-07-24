@@ -6,6 +6,12 @@ export interface CacheOption {
   funcName: string; // 函数名称
 }
 
+export interface RedisConfig {
+  prefix: string;
+  option: CacheOption;
+  redisClient: RedisClientType;
+}
+
 /**
  * 有序集合成员接口
  */
@@ -42,3 +48,17 @@ export interface CacheOption {
   appName: string;
   funcName: string;
 }
+
+// 限流项的配置接口
+export interface LimitItemConfig {
+  name?: string;
+  unit: string;
+  limit: number;
+  message?: string;
+}
+// 通过限流项配置的限制数目和计数的项接口
+export interface LimiterPassItem extends LimitItemConfig {
+  count: number;
+}
+// 通过时间单位到限制数目和计数的字典类型
+export type LimiterPassDict = Record<number, LimiterPassItem>;

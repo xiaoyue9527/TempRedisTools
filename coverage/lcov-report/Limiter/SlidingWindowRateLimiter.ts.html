@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for Ranking/Leaderboard.ts</title>
+    <title>Code coverage report for Limiter/SlidingWindowRateLimiter.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">Ranking</a> Leaderboard.ts</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">Limiter</a> SlidingWindowRateLimiter.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">94.73% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>18/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">88.88% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>8/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">94.73% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>18/19</span>
             </div>
         
             
@@ -133,36 +133,24 @@
 <a name='L68'></a><a href='#L68'>68</a>
 <a name='L69'></a><a href='#L69'>69</a>
 <a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -177,100 +165,163 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Redis as RedisClient } from "ioredis";
-import { CacheSortedSet } from "../TSRedisCacheKit/SortedSet";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { CacheSortedSet } from "../TSRedisCacheKit/SortedSet";
+import { RedisConfig } from "../type";
 &nbsp;
-export class Leaderboard {
-  private redis: RedisClient;
-  private leaderboard: CacheSortedSet;
+/**
+ * 滑动窗口限流器
+ */
+export class SlidingWindowRateLimiter extends CacheSortedSet {
+  windowSize: number; // 窗口大小，单位为秒
+  limit: number; // 限制值，窗口内允许通过的最大请求数量
+  initialTime: number;
+  sortedSetLength: number;
 &nbsp;
   /**
-   * 构造函数
-   * @param {RedisClient} redis - Redis客户端实例
-   * @param {string} leaderboardKey - 排行榜的键
+   * 创建一个滑动窗口限流器实例
+   * @param redisConfig Redis 配置
+   * @param windowSize 窗口大小，默认为 10 秒
+   * @param limit 限制值，默认为 10
+   * @param initialTime 分数差，默认为 1600000000000
    */
-  constructor(redis: RedisClient, leaderboardKey: string) {
-    this.redis = redis;
-    this.leaderboard = new CacheSortedSet(
-      leaderboardKey,
-      { appName: "app", funcName: "leaderboard" },
-      redis
+  constructor(
+    redisConfig: RedisConfig,
+    windowSize: number = 10,
+    limit: number = 10,
+    initialTime = 1690000000000,
+    sortedSetLength: number = 60
+  ) {
+    super(redisConfig.prefix, redisConfig.option, redisConfig.redisClient);
+    this.windowSize = windowSize;
+    this.limit = limit;
+    this.initialTime = initialTime;
+    this.sortedSetLength = sortedSetLength;
+  }
+  async handleSortedSetLength(key: string, currentTime: number) {
+    const minTime =
+      currentTime -
+      1000 * (this.windowSize + this.sortedSetLength) -
+      this.initialTime;
+    // 删除比窗口早sortedSetLength的时间的数据
+    const result = await this.redis.zremrangebyscore(
+      this.createKey(key),
+      0,
+      minTime
     );
+    if (result) {
+      console.log(`Sorted set length ${result}`, minTime);
+    }
   }
-&nbsp;
-  /**
-   * 添加用户及其分数
-   * @param {string} userId - 用户ID
-   * @param {number} score - 用户分数
-   */
-  async addUser(userId: string, score: number) {
-    await this.leaderboard.add(score, userId);
+<span class="fstat-no" title="function not covered" >  async </span>push(key: string, value: number = <span class="branch-0 cbranch-no" title="branch not covered" >Date.now())</span> {
+<span class="cstat-no" title="statement not covered" >    return await this.add(value - this.initialTime, value, key);</span>
   }
-&nbsp;
   /**
-   * 删除用户
-   * @param {string} userId - 用户ID
+   * 检查给定键的请求是否受到限流
+   * @param key 键
+   * @param limit 可选的限制值，用于覆盖实例的默认限制值
+   * @returns 返回一个包含状态信息的 Promise 对象
    */
-  async removeUser(userId: string) {
-    await this.leaderboard.remove(userId);
-  }
-&nbsp;
-  /**
-   * 获取用户排名及分数
-   * @param {string} userId - 用户ID
-   * @returns {Promise&lt;{rank: number, score: number}&gt;} 用户的排名和分数
-   */
-  async getUserRank(userId: string) {
-    const rank = await this.redis.zrevrank(
-      this.leaderboard.createKey(),
-      userId
+  async isRateLimited(
+    key: string,
+    limit?: number
+  ): Promise&lt;{
+    status: boolean;
+    msg?: string;
+    limit?: number;
+    current?: number;
+  }&gt; {
+    const currentTime = Date.now(); // 当前时间，单位为秒
+    await this.handleSortedSetLength(key, currentTime);
+    const count = await this.redis.zcount(
+      this.createKey(key),
+      currentTime - 1000 * 60 * this.windowSize - this.initialTime,
+      currentTime - this.initialTime
     );
-    const score = await this.leaderboard.score(userId);
-    return { rank, score };
-  }
-&nbsp;
-  /**
-   * 获取前N名用户
-   * @param {number} n - 要获取的用户数量
-   * @returns {Promise&lt;Array&lt;{member: string, score: number}&gt;&gt;} 前N名用户及其分数
-   */
-  async getTopUsers(n: number) {
-    return await this.leaderboard.rangeWithScores(0, n - 1);
-  }
-&nbsp;
-  /**
-   * 实时更新用户分数
-   * @param {string} userId - 用户ID
-   * @param {number} score - 新增的分数
-   */
-  async updateScore(userId: string, score: number) {
-    await this.leaderboard.incrementBy(userId, score);
+    const size = limit || this.limit;
+    if (count &gt; size) {
+      // 超过限制
+      return {
+        status: true,
+        msg: `Limit exceeded unit ${this.windowSize} limit ${size} urrentSerial ${count}`,
+      };
+    }
+    return {
+      status: false,
+      limit: size,
+      current: count,
+    };
   }
 }
 &nbsp;</pre></td></tr></table></pre>

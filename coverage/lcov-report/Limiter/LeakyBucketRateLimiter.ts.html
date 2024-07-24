@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for Ranking/Leaderboard.ts</title>
+    <title>Code coverage report for Limiter/LeakyBucketRateLimiter.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">Ranking</a> Leaderboard.ts</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">Limiter</a> LeakyBucketRateLimiter.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>20/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>20/20</span>
             </div>
         
             
@@ -108,38 +108,23 @@
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
 <a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L46'></a><a href='#L46'>46</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,133 +132,73 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Redis as RedisClient } from "ioredis";
-import { CacheSortedSet } from "../TSRedisCacheKit/SortedSet";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { CacheString } from "../TSRedisCacheKit/String";
+import { RedisConfig } from "../type";
 &nbsp;
-export class Leaderboard {
-  private redis: RedisClient;
-  private leaderboard: CacheSortedSet;
 &nbsp;
-  /**
-   * 构造函数
-   * @param {RedisClient} redis - Redis客户端实例
-   * @param {string} leaderboardKey - 排行榜的键
-   */
-  constructor(redis: RedisClient, leaderboardKey: string) {
-    this.redis = redis;
-    this.leaderboard = new CacheSortedSet(
-      leaderboardKey,
-      { appName: "app", funcName: "leaderboard" },
-      redis
-    );
+export class LeakyBucketRateLimiter extends CacheString {
+  capacity: number;
+  leakRate: number;
+&nbsp;
+  constructor(redisConfig: RedisConfig, capacity: number = 100, leakRate: number = 10) {
+    super(redisConfig.prefix, redisConfig.option, redisConfig.redisClient);
+    this.capacity = capacity;
+    this.leakRate = leakRate;
   }
 &nbsp;
-  /**
-   * 添加用户及其分数
-   * @param {string} userId - 用户ID
-   * @param {number} score - 用户分数
-   */
-  async addUser(userId: string, score: number) {
-    await this.leaderboard.add(score, userId);
+  async getBucketState(key: string): Promise&lt;{ tokens: number, lastLeakTime: number }&gt; {
+    const state = await this.redis.hgetall(this.createKey(key));
+    return {
+      tokens: state.tokens ? parseInt(state.tokens) : 0,
+      lastLeakTime: state.lastLeakTime ? parseInt(state.lastLeakTime) : Date.now()
+    };
   }
 &nbsp;
-  /**
-   * 删除用户
-   * @param {string} userId - 用户ID
-   */
-  async removeUser(userId: string) {
-    await this.leaderboard.remove(userId);
+  async setBucketState(key: string, tokens: number, lastLeakTime: number): Promise&lt;void&gt; {
+    await this.redis.hmset(this.createKey(key), { tokens: tokens.toString(), lastLeakTime: lastLeakTime.toString() });
   }
 &nbsp;
-  /**
-   * 获取用户排名及分数
-   * @param {string} userId - 用户ID
-   * @returns {Promise&lt;{rank: number, score: number}&gt;} 用户的排名和分数
-   */
-  async getUserRank(userId: string) {
-    const rank = await this.redis.zrevrank(
-      this.leaderboard.createKey(),
-      userId
-    );
-    const score = await this.leaderboard.score(userId);
-    return { rank, score };
+  async leakTokens(key: string): Promise&lt;void&gt; {
+    const state = await this.getBucketState(key);
+    const currentTime = Date.now();
+    const timeElapsed = (currentTime - state.lastLeakTime) / 1000;
+    const leakedTokens = Math.floor(timeElapsed * this.leakRate);
+    const newTokens = Math.max(0, state.tokens - leakedTokens);
+    await this.setBucketState(key, newTokens, currentTime);
   }
 &nbsp;
-  /**
-   * 获取前N名用户
-   * @param {number} n - 要获取的用户数量
-   * @returns {Promise&lt;Array&lt;{member: string, score: number}&gt;&gt;} 前N名用户及其分数
-   */
-  async getTopUsers(n: number) {
-    return await this.leaderboard.rangeWithScores(0, n - 1);
+  async isRateLimited(key: string): Promise&lt;{ status: boolean }&gt; {
+    await this.leakTokens(key);
+    const state = await this.getBucketState(key);
+    if (state.tokens &lt; this.capacity) {
+      await this.setBucketState(key, state.tokens + 1, state.lastLeakTime);
+      return { status: false };
+    } else {
+      return { status: true };
+    }
   }
-&nbsp;
-  /**
-   * 实时更新用户分数
-   * @param {string} userId - 用户ID
-   * @param {number} score - 新增的分数
-   */
-  async updateScore(userId: string, score: number) {
-    await this.leaderboard.incrementBy(userId, score);
-  }
-}
-&nbsp;</pre></td></tr></table></pre>
+}</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
