@@ -1,6 +1,6 @@
 {
   "name": "temp-redis-tools",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -9,7 +9,7 @@
     "tree": "tree -l 10 -o tree-out.txt --ignore node_modules/ --ignore build/ --ignore dist/ --ignore migrations/",
     "coverage": "jest --coverage",
     "dev": "ts-node-dev src/index.ts",
-    "rele":"bash release.sh"
+    "rele": "bash release.sh"
   },
   "keywords": [],
   "author": "xiaoyue9527",
