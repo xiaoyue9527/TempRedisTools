@@ -10,6 +10,26 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
+# 构建项目
+echo "Building project..."
+npm run build
+
+# 检查构建是否成功
+if [ $? -ne 0 ]; then
+  echo "Build failed. Aborting release."
+  exit 1
+fi
+
+# 生成依赖树
+echo "Generating dependency tree..."
+npm run tree
+
+# 检查依赖树生成是否成功
+if [ $? -ne 0 ]; then
+  echo "Generating dependency tree failed. Aborting release."
+  exit 1
+fi
+
 # 获取提交信息
 read -p "Enter commit message: " commit_message
 
