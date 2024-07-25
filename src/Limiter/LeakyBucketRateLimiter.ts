@@ -28,7 +28,7 @@ export class LeakyBucketRateLimiter extends CacheString {
     const state = await this.getBucketState(key);
     const currentTime = Date.now();
     const timeElapsed = (currentTime - state.lastLeakTime) / 1000;
-    const leakedTokens = Math.floor(timeElapsed * this.leakRate);
+    const leakedTokens = Math.max(0, Math.floor(timeElapsed * this.leakRate));
     const newTokens = Math.max(0, state.tokens - leakedTokens);
     await this.setBucketState(key, newTokens, currentTime);
   }

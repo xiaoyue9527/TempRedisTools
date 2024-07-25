@@ -7,7 +7,9 @@
     "build": "tsc -p tsconfig.build.json",
     "test": "jest",
     "tree": "tree -l 10 -o tree-out.txt --ignore node_modules/ --ignore build/ --ignore dist/ --ignore migrations/",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "dev": "ts-node-dev src/index.ts",
+    "rele":"bash release.sh"
   },
   "keywords": [],
   "author": "xiaoyue9527",
@@ -26,6 +28,7 @@
     "eslint": "^8.57.0",
     "jest": "^29.7.0",
     "ts-jest": "^29.2.3",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.5.4"
   },
   "dependencies": {

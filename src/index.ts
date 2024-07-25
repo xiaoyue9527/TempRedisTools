@@ -1,4 +1,5 @@
 import RedisLock from "./Lock/RedisLock";
+import { CompositeLeaderboard } from "./Ranking/CompositeLeaderboard";
 import { Leaderboard } from "./Ranking/Leaderboard";
 import { RatingSystem } from "./Ranking/RatingSystem";
 import { RedisMonitor } from "./RedisMonitor/RedisMonitor";
@@ -19,6 +20,7 @@ import { PubSubRedis } from "./TSRedisCacheKit/PubSub";
 import { CacheSet } from "./TSRedisCacheKit/Set";
 import { CacheSortedSet } from "./TSRedisCacheKit/SortedSet";
 import { CacheString } from "./TSRedisCacheKit/String";
+import { BitCountRange, BitFieldOperation, CacheOption, LimiterPassDict, LimiterPassItem, LimitItemConfig, RedisCommandArgument, RedisConfig, ZMember } from "./type";
 
 export {
   BaseCache,
@@ -40,4 +42,14 @@ export {
   Leaderboard,
   RatingSystem,
   RedisLock,
+  CompositeLeaderboard,
+  CacheOption,
+  RedisConfig,
+  ZMember,
+  BitCountRange,
+  BitFieldOperation,
+  RedisCommandArgument,
+  LimitItemConfig,
+  LimiterPassItem,
+  LimiterPassDict,
 };

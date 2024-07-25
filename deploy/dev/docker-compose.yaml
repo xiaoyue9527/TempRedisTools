@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+  redisearch:
+    image: redislabs/redisearch:latest
+    container_name: redisearch
+    restart: always
+    ports:
+      - "6380:6379"
+    volumes:
+      - redisearch-data:/data
+
+volumes:
+  redis-data:
+    driver: local
+  redisearch-data:
+    driver: local
