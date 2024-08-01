@@ -2,6 +2,7 @@ import RedisLock from "./Lock/RedisLock";
 import { CompositeLeaderboard } from "./Ranking/CompositeLeaderboard";
 import { Leaderboard } from "./Ranking/Leaderboard";
 import { RatingSystem } from "./Ranking/RatingSystem";
+import { ArticlePlagiarismDetector } from "./Redisearch/ArticlePlagiarismDetector";
 import { RedisMonitor } from "./RedisMonitor/RedisMonitor";
 import { BaseStatistic } from "./Statistic/base";
 import {
@@ -52,4 +53,5 @@ export {
   LimitItemConfig,
   LimiterPassItem,
   LimiterPassDict,
+  ArticlePlagiarismDetector
 };

@@ -27,6 +27,9 @@
 |  |  ├── RedisMonitor
 |  |  |  ├── RedisMonitor.ts.html
 |  |  |  └── index.html
+|  |  ├── Redisearch
+|  |  |  ├── ArticlePlagiarismDetector.ts.html
+|  |  |  └── index.html
 |  |  ├── Set.ts.html
 |  |  ├── SortedSet.ts.html
 |  |  ├── Statistic
@@ -90,6 +93,9 @@
 |  ├── RedisMonitor
 |  |  ├── RedisMonitor.d.ts
 |  |  └── RedisMonitor.js
+|  ├── Redisearch
+|  |  ├── ArticlePlagiarismDetector.d.ts
+|  |  └── ArticlePlagiarismDetector.js
 |  ├── Statistic
 |  |  ├── base.d.ts
 |  |  ├── base.js
@@ -137,6 +143,8 @@
 |  |  └── RatingSystem.ts
 |  ├── RedisMonitor
 |  |  └── RedisMonitor.ts
+|  ├── Redisearch
+|  |  └── ArticlePlagiarismDetector.ts
 |  ├── Statistic
 |  |  ├── base.ts
 |  |  └── busines.ts
@@ -157,6 +165,7 @@
 |  |  └── time.ts
 |  └── type.d.ts
 ├── test
+|  ├── ArticlePlagiarismDetector.test.ts
 |  ├── CacheBitField.test.js
 |  ├── CacheBitField.test.ts
 |  ├── CacheHash.test.js
@@ -199,6 +208,6 @@
 ├── tsconfig.build.json
 └── tsconfig.json
 
-directory: 1024 file: 8078
+directory: 1054 file: 9169
 
-ignored: directory (126)
+ignored: directory (134)
