@@ -69,4 +69,5 @@ export class BaseCache {
     commands(pipeline);
     return pipeline.exec();
   }
+  
 }

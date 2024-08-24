@@ -9,6 +9,7 @@
     "tree": "tree -l 10 -o tree-out.txt --ignore node_modules/ --ignore build/ --ignore dist/ --ignore migrations/",
     "coverage": "jest --coverage",
     "dev": "ts-node-dev src/index.ts",
+    "push": "git add . && read -p '请输入本次更新: \n' msg && git commit -m \"$msg\" && git push -u origin master",
     "rele": "bash release.sh"
   },
   "keywords": [],
