@@ -8,6 +8,7 @@ export class BaseCache {
   protected option: CacheOption; // 缓存选项
   protected redis: RedisClient; // Redis 客户端实例
   protected prefix: string; // 缓存键前缀
+  private keySetKey: string; // 用于存储所有缓存键的有序集合键
 
   /**
    * 构造函数
@@ -19,6 +20,7 @@ export class BaseCache {
     this.option = option;
     this.redis = redisClient;
     this.prefix = prefix;
+    this.keySetKey = `${this.prefix}-${this.option.appName}-${this.option.funcName}-keys`;
   }
 
   /**
@@ -28,9 +30,14 @@ export class BaseCache {
    */
   createKey(suffix?: string | number | boolean): string {
     const baseKey = `${this.prefix}-${this.option.appName}-${this.option.funcName}`;
-    return suffix !== undefined && suffix !== null && suffix !== ""
-      ? `${baseKey}-${suffix}`
-      : baseKey;
+    const key =
+      suffix !== undefined && suffix !== null && suffix !== ""
+        ? `${baseKey}-${suffix}`
+        : baseKey;
+
+    // 将生成的键添加到有序集合中
+    this.redis.zadd(this.keySetKey, Date.now(), key);
+    return key;
   }
 
   /**
@@ -69,5 +76,16 @@ export class BaseCache {
     commands(pipeline);
     return pipeline.exec();
   }
-  
+
+  /**
+   * 清除当前实例的所有缓存
+   * @returns 清除结果的 Promise
+   */
+  async clearAllCache(): Promise<void> {
+    const keys = await this.redis.zrange(this.keySetKey, 0, -1);
+    if (keys.length > 0) {
+      await this.redis.del(...keys);
+    }
+    await this.redis.del(this.keySetKey); // 清空有序集合
+  }
 }

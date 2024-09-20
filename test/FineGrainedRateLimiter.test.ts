@@ -12,6 +12,8 @@ jest.mock("ioredis", () => {
       ltrim: jest.fn().mockResolvedValue("OK"),
       llen: jest.fn().mockResolvedValue(1),
       lrange: jest.fn().mockResolvedValue(["1620000000000"]),
+      zadd: jest.fn().mockResolvedValue(1), // 添加 zadd 方法的模拟
+      zrange: jest.fn().mockResolvedValue(["key1", "key2"]), // 添加 zrange 方法的模拟
     })),
   };
 });
@@ -42,13 +44,20 @@ describe("FineGrainedRateLimiter", () => {
 
   test("should add a timestamp to the list", async () => {
     await rateLimiter.add("testKey");
-    expect(redisClient.rpush).toHaveBeenCalledWith("testPrefix-testApp-testFunc-testKey", expect.any(String));
+    expect(redisClient.rpush).toHaveBeenCalledWith(
+      "testPrefix-testApp-testFunc-testKey",
+      expect.any(String)
+    );
   });
 
   test("should handle list length correctly", async () => {
     redisClient.llen.mockResolvedValue(50); // 设置长度为 50，以确保超过 maxListLength
     await rateLimiter.handleListLength("testKey");
-    expect(redisClient.ltrim).toHaveBeenCalledWith("testPrefix-testApp-testFunc-testKey", 20, -1);
+    expect(redisClient.ltrim).toHaveBeenCalledWith(
+      "testPrefix-testApp-testFunc-testKey",
+      20,
+      -1
+    );
   });
 
   test("should check if rate limit is exceeded", async () => {

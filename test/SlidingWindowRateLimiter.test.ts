@@ -9,6 +9,7 @@ jest.mock("ioredis", () => {
       zadd: jest.fn(),
       zremrangebyscore: jest.fn(),
       zcount: jest.fn(),
+      zrange: jest.fn().mockResolvedValue(["key1", "key2"]), // 添加 zrange 方法的模拟
     })),
   };
 });

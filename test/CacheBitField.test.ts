@@ -10,6 +10,9 @@ jest.mock("ioredis", () => {
       getbit: jest.fn(),
       bitcount: jest.fn(),
       bitop: jest.fn(),
+      zadd: jest.fn(), // 添加 zadd 的模拟
+      zrange: jest.fn(), // 添加 zrange 的模拟
+      del: jest.fn(), // 添加 del 的模拟
     })),
   };
 });

@@ -1,141 +1,136 @@
 import { Redis as RedisClient } from "ioredis";
-import { CacheOption } from "../src/type";
-import { CacheHash } from "../src/TSRedisCacheKit/Hash";
+import { BitCountRange, CacheOption } from "../src/type";
+import { CacheBitField } from "../src/TSRedisCacheKit/BitField";
 
 // Mock ioredis
 jest.mock("ioredis", () => {
   return {
     Redis: jest.fn().mockImplementation(() => ({
-      hset: jest.fn(),
-      hget: jest.fn(),
-      hgetall: jest.fn(),
-      hexists: jest.fn(),
-      hdel: jest.fn(),
-      hlen: jest.fn(),
-      hkeys: jest.fn(),
-      hvals: jest.fn(),
-      hincrby: jest.fn(),
-      hincrbyfloat: jest.fn(),
+      setbit: jest.fn(),
+      getbit: jest.fn(),
+      bitcount: jest.fn(),
+      bitop: jest.fn(),
+      zadd: jest.fn().mockResolvedValue(1),
+      zrange: jest.fn().mockResolvedValue(["key1", "key2"]),
+      del: jest.fn().mockResolvedValue(2),
     })),
   };
 });
 
 const MockRedisClient = RedisClient as jest.MockedClass<typeof RedisClient>;
 
-describe("CacheHash", () => {
-  let cacheHash: CacheHash;
+describe("CacheBitField", () => {
+  let cacheBitField: CacheBitField;
   let redisClient: jest.Mocked<RedisClient>;
   const cacheOption: CacheOption = { appName: "testApp", funcName: "testFunc" };
 
   beforeEach(() => {
     redisClient = new MockRedisClient() as jest.Mocked<RedisClient>;
-    cacheHash = new CacheHash("testPrefix", cacheOption, redisClient);
+    cacheBitField = new CacheBitField("testPrefix", cacheOption, redisClient);
   });
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  test("should set hash field value", async () => {
-    redisClient.hset.mockResolvedValue(1);
-    const result = await cacheHash.set("field", { key: "value" }, "suffix");
-    const key = cacheHash.createKey("suffix");
+  test("should set a bit at offset", async () => {
+    redisClient.setbit.mockResolvedValue(0);
+    const result = await cacheBitField.setbit(5, true, "suffix");
+    const key = cacheBitField.createKey("suffix");
 
-    expect(redisClient.hset).toHaveBeenCalledWith(
-      key,
-      "field",
-      JSON.stringify({ key: "value" })
-    );
-    expect(result).toBe(true);
+    expect(redisClient.setbit).toHaveBeenCalledWith(key, 5, 1);
+    expect(result).toBe(false);
   });
 
-  test("should get hash field value", async () => {
-    redisClient.hget.mockResolvedValue(JSON.stringify({ key: "value" }));
-    const result = await cacheHash.get("field", "suffix");
-    const key = cacheHash.createKey("suffix");
+  test("should get a bit at offset", async () => {
+    redisClient.getbit.mockResolvedValue(1);
+    const result = await cacheBitField.getbit(5, "suffix");
+    const key = cacheBitField.createKey("suffix");
 
-    expect(redisClient.hget).toHaveBeenCalledWith(key, "field");
-    expect(result).toEqual({ key: "value" });
-  });
-
-  test("should get all fields and values from hash", async () => {
-    redisClient.hgetall.mockResolvedValue({
-      field1: JSON.stringify({ key1: "value1" }),
-      field2: JSON.stringify({ key2: "value2" }),
-    });
-    const result = await cacheHash.getAll("suffix");
-    const key = cacheHash.createKey("suffix");
-
-    expect(redisClient.hgetall).toHaveBeenCalledWith(key);
-    expect(result).toEqual({
-      field1: { key1: "value1" },
-      field2: { key2: "value2" },
-    });
-  });
-
-  test("should check if hash field exists", async () => {
-    redisClient.hexists.mockResolvedValue(1);
-    const result = await cacheHash.exists("field", "suffix");
-    const key = cacheHash.createKey("suffix");
-
-    expect(redisClient.hexists).toHaveBeenCalledWith(key, "field");
+    expect(redisClient.getbit).toHaveBeenCalledWith(key, 5);
     expect(result).toBe(1);
   });
 
-  test("should delete hash field", async () => {
-    redisClient.hdel.mockResolvedValue(1);
-    const result = await cacheHash.delete("field", "suffix");
-    const key = cacheHash.createKey("suffix");
+  test("should count bits in range with BYTE mode", async () => {
+    redisClient.bitcount.mockResolvedValue(5);
+    const option: BitCountRange = { start: 0, end: 10, mode: "BYTE" };
+    const result = await cacheBitField.count(option, "suffix");
+    const key = cacheBitField.createKey("suffix");
 
-    expect(redisClient.hdel).toHaveBeenCalledWith(key, "field");
-    expect(result).toBe(true);
-  });
-
-  test("should get length of hash", async () => {
-    redisClient.hlen.mockResolvedValue(2);
-    const result = await cacheHash.length("suffix");
-    const key = cacheHash.createKey("suffix");
-
-    expect(redisClient.hlen).toHaveBeenCalledWith(key);
-    expect(result).toBe(2);
-  });
-
-  test("should get all keys from hash", async () => {
-    redisClient.hkeys.mockResolvedValue(["field1", "field2"]);
-    const result = await cacheHash.keys("suffix");
-    const key = cacheHash.createKey("suffix");
-
-    expect(redisClient.hkeys).toHaveBeenCalledWith(key);
-    expect(result).toEqual(["field1", "field2"]);
-  });
-
-  test("should get all values from hash", async () => {
-    redisClient.hvals.mockResolvedValue([
-      JSON.stringify({ key1: "value1" }),
-      JSON.stringify({ key2: "value2" }),
-    ]);
-    const result = await cacheHash.values("suffix");
-    const key = cacheHash.createKey("suffix");
-
-    expect(redisClient.hvals).toHaveBeenCalledWith(key);
-    expect(result).toEqual([{ key1: "value1" }, { key2: "value2" }]);
-  });
-
-  test("should increment hash field by integer", async () => {
-    redisClient.hincrby.mockResolvedValue(5);
-    const result = await cacheHash.incrementBy("field", 3, "suffix");
-    const key = cacheHash.createKey("suffix");
-
-    expect(redisClient.hincrby).toHaveBeenCalledWith(key, "field", 3);
+    expect(redisClient.bitcount).toHaveBeenCalledWith(key, 0, 10, "BYTE");
     expect(result).toBe(5);
   });
 
-  test("should increment hash field by float", async () => {
-    redisClient.hincrbyfloat.mockResolvedValue("5.5");
-    const result = await cacheHash.incrementByFloat("field", 2.5, "suffix");
-    const key = cacheHash.createKey("suffix");
+  test("should count bits in range with BIT mode", async () => {
+    redisClient.bitcount.mockResolvedValue(3);
+    const option: BitCountRange = { start: 0, end: 10, mode: "BIT" };
+    const result = await cacheBitField.count(option, "suffix");
+    const key = cacheBitField.createKey("suffix");
 
-    expect(redisClient.hincrbyfloat).toHaveBeenCalledWith(key, "field", 2.5);
-    expect(result).toBe("5.5");
+    expect(redisClient.bitcount).toHaveBeenCalledWith(key, 0, 10, "BIT");
+    expect(result).toBe(3);
+  });
+
+  test("should count bits in range without mode", async () => {
+    redisClient.bitcount.mockResolvedValue(7);
+    const option: BitCountRange = { start: 0, end: 10 };
+    const result = await cacheBitField.count(option, "suffix");
+    const key = cacheBitField.createKey("suffix");
+
+    expect(redisClient.bitcount).toHaveBeenCalledWith(key, 0, 10);
+    expect(result).toBe(7);
+  });
+
+  test("should perform bit operation", async () => {
+    redisClient.bitop.mockResolvedValue(10);
+    const result = await cacheBitField.bitop("AND", "destKey", [
+      "key1",
+      "key2",
+    ]);
+    const key1 = cacheBitField.createKey("key1");
+    const key2 = cacheBitField.createKey("key2");
+
+    expect(redisClient.bitop).toHaveBeenCalledWith(
+      "AND",
+      "destKey",
+      key1,
+      key2
+    );
+    expect(result).toBe(10);
+  });
+
+  test("should clear all cache", async () => {
+    // Mock zrange to return some keys
+    redisClient.zrange.mockResolvedValue(["key1", "key2"]);
+
+    await cacheBitField.clearAllCache();
+
+    expect(redisClient.zrange).toHaveBeenCalledWith(
+      "testPrefix-testApp-testFunc-keys",
+      0,
+      -1
+    );
+    expect(redisClient.del).toHaveBeenCalledWith("key1", "key2");
+    expect(redisClient.del).toHaveBeenCalledWith(
+      "testPrefix-testApp-testFunc-keys"
+    );
+  });
+
+  test("should handle clearAllCache with no keys", async () => {
+    // Mock zrange to return no keys
+    redisClient.zrange.mockResolvedValue([]);
+
+    await cacheBitField.clearAllCache();
+
+    expect(redisClient.zrange).toHaveBeenCalledWith(
+      "testPrefix-testApp-testFunc-keys",
+      0,
+      -1
+    );
+    // del should only be called once for the keySetKey
+    expect(redisClient.del).toHaveBeenCalledWith(
+      "testPrefix-testApp-testFunc-keys"
+    );
+    expect(redisClient.del).toHaveBeenCalledTimes(1);
   });
 });

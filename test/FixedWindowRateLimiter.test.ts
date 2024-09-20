@@ -8,6 +8,8 @@ jest.mock("ioredis", () => {
     Redis: jest.fn().mockImplementation(() => ({
       incr: jest.fn(),
       expire: jest.fn(),
+      zadd: jest.fn().mockResolvedValue(1), // 添加 zadd 方法的模拟
+      zrange: jest.fn().mockResolvedValue(["key1", "key2"]), // 添加 zrange 方法的模拟
     })),
   };
 });

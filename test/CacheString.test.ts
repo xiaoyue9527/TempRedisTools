@@ -16,6 +16,8 @@ jest.mock("ioredis", () => {
       mset: jest.fn().mockResolvedValue("OK"),
       mget: jest.fn().mockResolvedValue(["value1", "value2"]),
       setnx: jest.fn().mockResolvedValue(1),
+      zadd: jest.fn().mockResolvedValue(1), // 添加 zadd 方法的模拟
+      zrange: jest.fn().mockResolvedValue(["key1", "key2"]), // 添加 zrange 方法的模拟
     })),
   };
 });

@@ -16,6 +16,9 @@ jest.mock("ioredis", () => {
       sunion: jest.fn().mockResolvedValue(["value1", "value2"]),
       sinter: jest.fn().mockResolvedValue(["value1"]),
       sdiff: jest.fn().mockResolvedValue(["value2"]),
+      zadd: jest.fn().mockResolvedValue(1), // Mock zadd
+      zrange: jest.fn().mockResolvedValue([]), // Mock zrange
+      del: jest.fn().mockResolvedValue(1), // Mock del
     })),
   };
 });

@@ -81,7 +81,7 @@ npm install temp-redis-tools
 
 ```typescript
 import { Redis } from "ioredis";
-import { BaseCache } from "temp-redis-tools"; // 假设模块名为 temp-redis-tools
+import { BaseCache } from "temp-redis-tools"; 
 
 const redisClient = new Redis();
 const cacheOption = { appName: "testApp", funcName: "testFunc" };
@@ -135,6 +135,35 @@ async function executeTransactionExample() {
 }
 
 executeTransactionExample();
+```
+
+#### 6. 清除所有缓存
+
+```ts
+async function clearAllCacheExample() {
+  await cache.clearAllCache().then(() => {
+    console.log("All cache cleared.");
+  }).catch(err => {
+    console.error("Error clearing cache:", err);
+  });
+}
+
+clearAllCacheExample();
+```
+
+#### 7. 处理没有键的清除缓存
+
+```ts
+async function clearAllCacheNoKeysExample() {
+  // 假设没有键存在
+  await cache.clearAllCache().then(() => {
+    console.log("All cache cleared (no keys).");
+  }).catch(err => {
+    console.error("Error clearing cache (no keys):", err);
+  });
+}
+
+clearAllCacheNoKeysExample();
 ```
 
 ### `CacheString` 类
@@ -698,7 +727,7 @@ console.log(resultBitCount); // 输出: 结果位数
 
 ```typescript
 import { Redis } from "ioredis";
-import { PubSubRedis } from "temp-redis-tools"; // 假设模块名为 temp-redis-tools
+import { PubSubRedis } from "temp-redis-tools"; 
 
 const redisClient = new Redis();
 const cacheOption = { appName: "testApp", funcName: "testFunc" };
@@ -795,7 +824,7 @@ closeExample();
 
 ```typescript
 import { Redis } from "ioredis";
-import { PubSubRedis } from "temp-redis-tools"; // 假设模块名为 temp-redis-tools
+import { PubSubRedis } from "temp-redis-tools"; 
 
 async function main() {
   const redisClient = new Redis();

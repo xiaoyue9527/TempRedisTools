@@ -7,6 +7,7 @@ export declare class BaseCache {
     protected option: CacheOption;
     protected redis: RedisClient;
     protected prefix: string;
+    private keySetKey;
     /**
      * 构造函数
      * @param prefix - 缓存键前缀
@@ -37,4 +38,9 @@ export declare class BaseCache {
      * @returns 事务执行结果的 Promise
      */
     executeTransaction(commands: (pipeline: ChainableCommander) => void): Promise<any>;
+    /**
+     * 清除当前实例的所有缓存
+     * @returns 清除结果的 Promise
+     */
+    clearAllCache(): Promise<void>;
 }

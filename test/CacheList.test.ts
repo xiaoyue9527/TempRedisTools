@@ -16,6 +16,9 @@ jest.mock("ioredis", () => {
       lset: jest.fn(),
       lrem: jest.fn(),
       linsert: jest.fn(),
+      zadd: jest.fn().mockResolvedValue(1),
+      zrange: jest.fn().mockResolvedValue(["key1", "key2"]),
+      del: jest.fn().mockResolvedValue(2), // 添加 del 的模拟
     })),
   };
 });
@@ -168,5 +171,40 @@ describe("CacheList", () => {
       "newValue"
     );
     expect(result).toBe(4);
+  });
+
+  test("should clear all cache", async () => {
+    // Mock zrange to return some keys
+    redisClient.zrange.mockResolvedValue(["key1", "key2"]);
+
+    await cacheList.clearAllCache();
+
+    expect(redisClient.zrange).toHaveBeenCalledWith(
+      "testPrefix-testApp-testFunc-keys",
+      0,
+      -1
+    );
+    expect(redisClient.del).toHaveBeenCalledWith("key1", "key2");
+    expect(redisClient.del).toHaveBeenCalledWith(
+      "testPrefix-testApp-testFunc-keys"
+    );
+  });
+
+  test("should handle clearAllCache with no keys", async () => {
+    // Mock zrange to return no keys
+    redisClient.zrange.mockResolvedValue([]);
+
+    await cacheList.clearAllCache();
+
+    expect(redisClient.zrange).toHaveBeenCalledWith(
+      "testPrefix-testApp-testFunc-keys",
+      0,
+      -1
+    );
+    // del should only be called once for the keySetKey
+    expect(redisClient.del).toHaveBeenCalledWith(
+      "testPrefix-testApp-testFunc-keys"
+    );
+    expect(redisClient.del).toHaveBeenCalledTimes(1);
   });
 });
