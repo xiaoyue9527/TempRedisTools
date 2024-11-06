@@ -5,7 +5,8 @@ export declare class PubSubRedis extends BaseCache {
     private subscriber;
     private listeners;
     private filePath;
-    constructor(prefix: string, option: CacheOption, redisClient: RedisClient, filePath?: string);
+    private isPersistent;
+    constructor(prefix: string, option: CacheOption, redisClient: RedisClient, isPersistent?: boolean, filePath?: string);
     subscribe(channel: string, listener: (message: string, channel: string) => void): Promise<void>;
     unsubscribe(channel: string): Promise<void>;
     psubscribe(pattern: string, listener: (message: string, channel: string) => void): Promise<void>;

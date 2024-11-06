@@ -109,15 +109,21 @@ describe("PubSubRedis", () => {
   });
 
   test("should persist a message to a file", async () => {
+    // 确保 isPersistent 设置为 true
+    pubSubRedis = new PubSubRedis("testPrefix", cacheOption, redisClient, true);
+
     const filePath = path.join(
       process.cwd(),
       "data",
       "testPrefix-testApp-testFunc-testChannel.log"
     );
+
     await pubSubRedis.persistMessage("testChannel", "testMessage");
+
     expect(mockFs.mkdir).toHaveBeenCalledWith(path.dirname(filePath), {
       recursive: true,
     });
+
     expect(mockFs.appendFile).toHaveBeenCalledWith(
       filePath,
       expect.stringContaining("testMessage")
@@ -125,6 +131,9 @@ describe("PubSubRedis", () => {
   });
 
   test("should retry sending a message", async () => {
+    // 确保 isPersistent 设置为 true
+    pubSubRedis = new PubSubRedis("testPrefix", cacheOption, redisClient, true);
+
     // Temporarily disable console.log and console.error
     console.log = jest.fn();
     console.error = jest.fn();
@@ -192,6 +201,8 @@ describe("PubSubRedis", () => {
   });
 
   test("should handle error when persisting a message", async () => {
+    pubSubRedis = new PubSubRedis("testPrefix", cacheOption, redisClient, true);
+
     mockFs.mkdir.mockRejectedValueOnce(new Error("Mkdir Error"));
 
     await expect(
@@ -219,7 +230,7 @@ describe("PubSubRedis", () => {
 
     redisClient.publish.mockRejectedValueOnce(new Error("Publish Error"));
 
-    await pubSubRedis.publish("testChannel", "testMessage").catch(() => {});
+    await pubSubRedis.publish("testChannel", "testMessage").catch(() => { });
 
     expect(console.error).toHaveBeenCalledWith(
       `Failed to publish message: testMessage to channel: testPrefix-testApp-testFunc-testChannel`,
@@ -235,7 +246,7 @@ describe("PubSubRedis", () => {
 
     redisClient.subscribe.mockRejectedValueOnce(new Error("Subscribe Error"));
 
-    await pubSubRedis.subscribe("testChannel", jest.fn()).catch(() => {});
+    await pubSubRedis.subscribe("testChannel", jest.fn()).catch(() => { });
 
     expect(console.error).toHaveBeenCalledWith(
       `Failed to subscribe to channel: testPrefix-testApp-testFunc-testChannel`,
@@ -251,7 +262,7 @@ describe("PubSubRedis", () => {
 
     redisClient.psubscribe.mockRejectedValueOnce(new Error("Psubscribe Error"));
 
-    await pubSubRedis.psubscribe("testPattern", jest.fn()).catch(() => {});
+    await pubSubRedis.psubscribe("testPattern", jest.fn()).catch(() => { });
 
     expect(console.error).toHaveBeenCalledWith(
       `Failed to psubscribe to pattern: testPrefix-testApp-testFunc-testPattern`,
@@ -269,7 +280,7 @@ describe("PubSubRedis", () => {
       new Error("Unsubscribe Error")
     );
 
-    await pubSubRedis.unsubscribe("testChannel").catch(() => {});
+    await pubSubRedis.unsubscribe("testChannel").catch(() => { });
 
     expect(console.error).toHaveBeenCalledWith(
       `Failed to unsubscribe from channel: testPrefix-testApp-testFunc-testChannel`,
@@ -287,7 +298,7 @@ describe("PubSubRedis", () => {
       new Error("Punsubscribe Error")
     );
 
-    await pubSubRedis.punsubscribe("testPattern").catch(() => {});
+    await pubSubRedis.punsubscribe("testPattern").catch(() => { });
 
     expect(console.error).toHaveBeenCalledWith(
       `Failed to punsubscribe from pattern: testPrefix-testApp-testFunc-testPattern`,

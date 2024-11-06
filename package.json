@@ -12,10 +12,24 @@
     "push": "git add . && read -p '请输入本次更新: \n' msg && git commit -m \"$msg\" && git push -u origin master",
     "rele": "bash release.sh"
   },
-  "keywords": [],
+  "keywords": [
+    "redis",
+    "rate limiting",
+    "locking",
+    "ranking",
+    "monitoring",
+    "tools",
+    "utilities"
+  ],
   "author": "xiaoyue9527",
   "license": "MIT",
-  "description": "",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/xiaoyue9527/TempRedisTools/issues"
+  },
+  "description": "TempRedisTools is a comprehensive toolkit for working with Redis, providing a variety of utilities and modules to facilitate tasks such as rate limiting, locking, ranking, monitoring, and more. This package is designed to streamline the development process by offering pre-built components that integrate seamlessly with Redis.",
   "repository": {
     "type": "git",
     "url": "https://github.com/xiaoyue9527/TempRedisTools.git"

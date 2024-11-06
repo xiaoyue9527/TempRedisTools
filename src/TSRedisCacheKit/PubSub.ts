@@ -11,18 +11,21 @@ export class PubSubRedis extends BaseCache {
     (message: string, channel: string) => void
   >();
   private filePath: string;
+  private isPersistent: boolean;
 
   constructor(
     prefix: string,
     option: CacheOption,
     redisClient: RedisClient,
+    isPersistent: boolean = false,
     filePath: string = path.join(process.cwd(), "data") // 默认文件路径为当前项目目录的data文件夹
+
   ) {
     super(prefix, option, redisClient);
     this.filePath = filePath;
+    this.isPersistent = isPersistent
     this.subscriber = redisClient.duplicate();
     this.subscriber.on("error", (err) => console.error(err));
-    this.subscriber.connect();
 
     // 监听消息事件
     this.subscriber.on("message", (channel, message) => {
@@ -116,6 +119,7 @@ export class PubSubRedis extends BaseCache {
     message: string,
     fileName?: string
   ): Promise<void> {
+    if (!this.isPersistent) return
     const filePath = path.join(
       this.filePath,
       `${fileName || this.createKey(channel)}.log`
@@ -137,6 +141,7 @@ export class PubSubRedis extends BaseCache {
     message: string,
     retryCount: number = 3
   ): Promise<void> {
+    if (!this.isPersistent) return
     for (let i = 0; i < retryCount; i++) {
       try {
         console.log(`Attempt ${i + 1} to send message: ${message}`);
