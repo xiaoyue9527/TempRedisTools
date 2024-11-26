@@ -11,6 +11,8 @@ jest.mock("redis", () => {
         sMembers: jest.fn().mockResolvedValue([]),
         multi: jest.fn().mockReturnThis(),
         exec: jest.fn().mockResolvedValue([]),
+        keys: jest.fn().mockResolvedValue([]),
+        del: jest.fn().mockResolvedValue(0),
     };
     return {
         createClient: jest.fn(() => mRedisClient),
@@ -105,5 +107,32 @@ describe("QuestionSearch", () => {
         expect(results.length).toBe(1);
         expect(results[0].id).toBe("qa1");
         expect(results[0].similarity).toBe(1);
+    });
+
+    // 新增的单元测试
+    it("should create an index", async () => {
+        const qa = { id: "qa1", text: "What is Redis?" };
+        await questionSearch.createIndex("bucket", qa);
+        expect(redisClient.multi).toHaveBeenCalled();
+        expect(redisClient.sAdd).toHaveBeenCalledTimes(5); // numBands
+        expect(redisClient.exec).toHaveBeenCalled();
+    });
+
+    it("should delete an index", async () => {
+        redisClient.keys.mockResolvedValueOnce(["bucket:0:0,0,0,0,0", "bucket:1:0,0,0,0,0"]);
+        await questionSearch.deleteIndex("bucket");
+        expect(redisClient.keys).toHaveBeenCalledWith("bucket:*");
+        expect(redisClient.del).toHaveBeenCalledWith(["bucket:0:0,0,0,0,0", "bucket:1:0,0,0,0,0"]);
+    });
+
+    it("should rebuild an index", async () => {
+        const qa = { id: "qa1", text: "What is Redis?" };
+        redisClient.keys.mockResolvedValueOnce(["bucket:0:0,0,0,0,0", "bucket:1:0,0,0,0,0"]);
+        await questionSearch.rebuildIndex("bucket", qa);
+        expect(redisClient.keys).toHaveBeenCalledWith("bucket:*");
+        expect(redisClient.del).toHaveBeenCalledWith(["bucket:0:0,0,0,0,0", "bucket:1:0,0,0,0,0"]);
+        expect(redisClient.multi).toHaveBeenCalled();
+        expect(redisClient.sAdd).toHaveBeenCalledTimes(5); // numBands
+        expect(redisClient.exec).toHaveBeenCalled();
     });
 });

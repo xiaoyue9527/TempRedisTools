@@ -20,5 +20,8 @@ declare class QuestionSearch {
     storeSignatureLSH(bucketPrefix: string, qa: QA, signature: number[]): Promise<void>;
     private retrieveCandidatesLSH;
     checkSimilarity(bucketPrefix: string, question: string): Promise<SimilarQA[]>;
+    createIndex(bucketPrefix: string, qa: QA): Promise<void>;
+    deleteIndex(bucketPrefix: string): Promise<void>;
+    rebuildIndex(bucketPrefix: string, qa: QA): Promise<void>;
 }
 export { QuestionSearch };

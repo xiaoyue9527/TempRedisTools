@@ -137,6 +137,23 @@ class QuestionSearch {
             };
         }).sort((a, b) => b.similarity - a.similarity);
     }
+
+    // 添加新的公有方法来创建、删除和重建索引
+    public async createIndex(bucketPrefix: string, qa: QA): Promise<void> {
+        const shingles = this.shingles(qa.text);
+        const signature = this.minHashSignature(shingles);
+        await this.storeSignatureLSH(bucketPrefix, qa, signature);
+    }
+
+    public async deleteIndex(bucketPrefix: string): Promise<void> {
+        const keys = await this.redisClient.keys(`${bucketPrefix}:*`);
+        await this.redisClient.del(keys);
+    }
+
+    public async rebuildIndex(bucketPrefix: string, qa: QA): Promise<void> {
+        await this.deleteIndex(bucketPrefix);
+        await this.createIndex(bucketPrefix, qa);
+    }
 }
 
 export {
