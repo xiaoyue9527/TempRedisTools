@@ -17,11 +17,15 @@ class QuestionSearch {
     private rowsPerBand: number;
     private numHashes: number;
 
-    constructor(numBands: number, rowsPerBand: number) {
+    constructor(numBands: number, rowsPerBand: number, url?: string) {
         this.numBands = numBands;
         this.rowsPerBand = rowsPerBand;
         this.numHashes = numBands * rowsPerBand;
-        this.redisClient = createClient();
+        if (url) {
+            this.redisClient = createClient({ url: url });
+        } else {
+            this.redisClient = createClient();
+        }
 
         this.redisClient.on('error', (err) => console.error('Redis Client Error', err));
         this.redisClient.connect().catch(console.error);

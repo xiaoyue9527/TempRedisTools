@@ -12,7 +12,7 @@ declare class QuestionSearch {
     private numBands;
     private rowsPerBand;
     private numHashes;
-    constructor(numBands: number, rowsPerBand: number);
+    constructor(numBands: number, rowsPerBand: number, url?: string);
     private shingles;
     private minHashSignature;
     private hashFunction;
