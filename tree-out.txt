@@ -95,7 +95,9 @@
 |  |  └── RedisMonitor.js
 |  ├── Redisearch
 |  |  ├── ArticlePlagiarismDetector.d.ts
-|  |  └── ArticlePlagiarismDetector.js
+|  |  ├── ArticlePlagiarismDetector.js
+|  |  ├── QuestionSearch.d.ts
+|  |  └── QuestionSearch.js
 |  ├── Statistic
 |  |  ├── base.d.ts
 |  |  ├── base.js
@@ -144,7 +146,8 @@
 |  ├── RedisMonitor
 |  |  └── RedisMonitor.ts
 |  ├── Redisearch
-|  |  └── ArticlePlagiarismDetector.ts
+|  |  ├── ArticlePlagiarismDetector.ts
+|  |  └── QuestionSearch.ts
 |  ├── Statistic
 |  |  ├── base.ts
 |  |  └── busines.ts
@@ -188,6 +191,7 @@
 |  ├── LeakyBucketRateLimiter.test.ts
 |  ├── PubSubRedis.test.js
 |  ├── PubSubRedis.test.ts
+|  ├── QuestionSearch.test.ts
 |  ├── RatingSystem.test.js
 |  ├── RatingSystem.test.ts
 |  ├── RedisLock.test.js
@@ -208,6 +212,6 @@
 ├── tsconfig.build.json
 └── tsconfig.json
 
-directory: 1054 file: 9169
+directory: 1054 file: 9173
 
 ignored: directory (134)
